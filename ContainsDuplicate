@@ -1,0 +1,16 @@
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        Set<Integer> map = new HashSet<>();
+//using hashset because we need to return only  true or false no need to return index
+//hashmap should contains key value pairs
+
+        for(int i=0;i<nums.length;i++){
+            if(map.contains(nums[i]))
+            return true;
+            else{
+                map.add(nums[i]);
+            }
+        }
+        return false;
+    }
+}

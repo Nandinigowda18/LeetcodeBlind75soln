@@ -1,0 +1,23 @@
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        // Initialize the result array with all 1s
+        int result[] = new int[nums.length];
+        Arrays.fill(result, 1);
+        
+        int pre = 1, post = 1; // Variables to store products before and after each index
+        
+        // Calculate products of elements to the left of each index
+        for(int i = 0; i < nums.length; i++) {
+            result[i] = pre; // Store the product before the current index
+            pre = nums[i] * pre; // Update pre for the next iteration
+        }
+        
+        // Calculate products of elements to the right of each index and multiply with pre-calculated products
+        for(int i = nums.length - 1; i >= 0; i--) {
+            result[i] = result[i] * post; // Multiply pre-calculated product with product after the index
+            post = nums[i] * post; // Update post for the next iteration
+        }
+
+        return result; // Return the final result
+    }
+}

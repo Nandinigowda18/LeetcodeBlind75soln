@@ -1,0 +1,32 @@
+class Solution {
+    public int maxProduct(int[] nums) {
+        if(nums.length==0){
+            return 0;
+        }
+
+        int min= nums[0];
+        int max=nums[0];
+        int result=nums[0];
+
+//for loop must starts from 1 as we assigned nums[0] to max and min variables
+        for(int i=1;i<nums.length;i++){
+          int  cur=nums[i];
+
+          //calc max out of( cur, cur*prevmax, cur*prevmin)
+          //but we have 3 variables to compare to reduce it to two calc max separetly for this 2 =Math.max(cur*prevmax, cur*prevmin)
+
+         // ( cur, Math.max(cur*prevmax, cur*prevmin))
+            int maxtemp = Math.max(cur, Math.max(cur*max,cur*min));
+
+            //same proces  for min
+           int  mintemp= Math.min(cur, Math.min(cur*min,cur*max));
+            max=maxtemp;
+            min = mintemp;
+
+//calc result 
+            result= Math.max(result,max);
+        }
+        return result;
+        
+    }
+}

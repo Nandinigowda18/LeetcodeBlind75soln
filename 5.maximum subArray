@@ -1,0 +1,21 @@
+class Solution {
+    public int maxSubArray(int[] nums) {
+
+        int max =nums[0];
+        int cur = 0;
+
+        for(int i=0;i<nums.length;i++){
+        if (cur<0){
+         cur=0;
+}
+//calculating the current sum
+cur=cur+nums[i];
+//calculatingthe maximum value present in the current valueusing math.max function
+max= Math.max(cur, max);
+
+        }
+        return max;
+
+        
+    }
+}
